@@ -1,0 +1,39 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+$redes: facebook, twitter, instagram, pinterest, youtube, tiktok;
+
+.sociales{
+    margin: 5rem 0;
+    display: flex;
+
+    @include m.tablet {
+        margin: 0;
+    };
+    
+    &__enlace{
+
+
+        &::before{
+            content: '';
+            padding: 2rem;
+            display: inline-block;
+        }
+
+        @each $red in $redes {
+            &[href*="#{$red}.com"]::before{
+                background-image: url(../img/icono_#{$red}.svg);
+            }
+        } 
+    }
+    &__accesible{
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0,0,0);
+        border: 0;
+        display: block;
+    }
+}
